@@ -1,0 +1,145 @@
+Assignment Name: SQL Commands Assignment
+
+--- Employees Table:
+
+a. Write a query to select all columns and rows from the employees table.
+
+ans: SELECT * FROM employees;
+
+SELECT is a SQL statement used to retrieve data from one or more tables in a database. 
+The asterisk * is a shorthand for selecting all columns in a table. This query will retrieve all the rows and columns from the employees table, displaying them in the order they are stored in the table.
+
+
+
+
+
+b. Write a query to select only the name and salary columns of all employees with a salary greater than 50000.
+
+ans :  SELECT name, salary FROM employees WHERE salary > 50000;
+
+This is a SELECT statement that retrieves the name and salary columns from the employees table. WHERE salary > 50000: This is a filter condition that restricts the results to only include employees whose salary is greater than 50000.
+
+
+
+
+
+c. Write a query to calculate the average salary of all employees.
+
+ans : SELECT AVG(salary) FROM employees;
+
+The AVG() function is an aggregate function in SQL that is used to calculate the average value of a given column. SELECT AVG(salary): This specifies that we want to retrieve the average value of the salary column from the employees table.
+
+
+
+
+
+
+d. Write a query to count the number of employees who work in the "Marketing" department.
+
+ans : SELECT COUNT(*) FROM employees WHERE department_id = (SELECT id FROM departments WHERE name = 'Marketing');
+
+The explain of the query is : 
+
+ SELECT COUNT(*): This specifies that we want to count the number of rows that match the condition specified in the query. 
+
+ FROM employees: This specifies the table we want to retrieve data from, which is the employees table.
+ 
+ WHERE department_id = (SELECT id FROM departments WHERE name = 'Marketing'): This is a filter condition that restricts the results to only include employees whose department_id matches the id of the 'Marketing' department. The = operator is used to compare the department_id column with the result of the subquery, which retrieves the id of the 'Marketing' department from the departments table based on its name.
+
+
+
+
+
+
+
+
+e. Write a query to update the salary column of the employee with an id of 1001 to 60000.
+
+ans :  UPDATE employees SET salary = 60000 WHERE id = 1001;
+
+This query will update the salary column of the employee with an id of 1001 to 60000.
+
+ UPDATE employees: This specifies the table we want to update, which is the employees table.
+
+ SET salary = 60000: This sets the value of the salary column to 60000 for the employee with id of 1001.
+
+ WHERE id = 1001: This is a filter condition that restricts the update to only the employee with id of 1001. The = operator is used to compare the id column with the value 1001. 
+
+
+
+
+
+f. Write a query to delete all employees whose salary is less than 30000.
+
+ans: DELETE FROM employees WHERE salary < 30000;
+
+This query will delete all employees whose salary is less than 30000.
+
+ DELETE FROM employees: This specifies the table we want to delete data from, which is the employees table.
+
+ WHERE salary < 30000: This is a filter condition that restricts the delete to only include employees whose salary is less than 30000. The < operator is used to compare the salary column with the value 30000.
+
+
+
+
+
+
+Departments Table:
+
+
+a. Write a query to select all columns and rows from the departments table.
+
+ans : SELECT * FROM departments;
+
+This query will select all columns and rows from the departments table.
+
+SELECT *: This specifies that we want to retrieve all columns from the departments table.
+
+
+
+
+
+b. Write a query to select only the name and manager columns of the "Finance" department.
+
+ans :  SELECT name, manager FROM departments WHERE name = 'Finance';
+
+This query will select only the name and manager columns of the "Finance" department.
+
+SELECT name, manager: This specifies that we want to retrieve the name and manager columns from the departments table.
+
+FROM departments: This specifies the table we want to retrieve data from, which is the departments table.
+
+WHERE name = 'Finance': This is a filter condition that restricts the results to only include departments whose name is 'Finance'. The = operator is used to compare the name column with the value 'Finance'.
+
+
+
+
+c. Write a query to calculate the total number of employees in each department.
+
+ans: SELECT departments.name AS department, COUNT(employees.id) AS total_employees
+FROM employees
+JOIN departments ON employees.department_id = departments.id
+GROUP BY departments.name
+
+
+This query joins the employees and departments tables on the department_id and id columns, respectively. It then groups the results by the name column in the departments table, and uses the COUNT function to count the number of rows in the employees table for each group. The result is a table that shows the name of each department and the total number of employees in that department.
+
+
+
+
+d. Write a query to insert a new department called "Research" with a manager named "John Doe".
+
+ans : INSERT INTO departments (name, manager) VALUES ('Research', 'John Doe');
+
+This query will insert a new department called "Research" with a manager named "John Doe".
+
+INSERT INTO departments: This specifies the table we want to insert data into, which is the departments table.
+
+(name, manager): This specifies the columns we want to insert data into, which are name and manager.
+
+VALUES ('Research', 'John Doe'): This specifies the values we want to insert into the name and manager columns, which are the string 'Research' and the string 'John Doe', respectively.
+
+Therefore, this query will add a new row to the depart
+
+
+
