@@ -1,0 +1,54 @@
+Question 1:
+
+
+You have a Laravel application with a form that submits user information using a POST request. Write the code to retrieve the 'name' input field value from the request and store it in a variable called $name.
+
+
+Answer :
+
+In App/Http/Controllers folder: 
+
+
+Controller Code (ExampleController.php):-
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    public function submitForm(Request $request)
+    {
+        $name = $request->input('name');
+
+        // database work
+
+        return view('result', compact('name'));
+    }
+}
+
+
+In  routes/web.php file:-
+
+
+use App\Http\Controllers\ExampleController;
+
+Route::post('/submit-form', [ExampleController::class, 'submitForm'])->name('submit.form');
+
+
+
+
+View Code (result.blade.php):-
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Form Submission Result</title>
+</head>
+<body>
+    <h1>Form Submission Result</h1>
+    <p>The submitted name is: {{ $name }}</p>
+</body>
+</html>

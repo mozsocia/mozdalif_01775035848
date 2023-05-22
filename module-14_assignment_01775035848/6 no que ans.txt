@@ -1,0 +1,49 @@
+Question 6:
+
+
+Retrieve the value of the 'remember_token' cookie from the current request in Laravel and store it in a variable called $rememberToken. If the cookie is not present, set $rememberToken to null.
+
+
+Answer 6:-
+
+To retrieve the value of the 'remember_token' cookie from the current request in Laravel and store it in a variable called `$rememberToken`, Have to use the `request()` helper function or the `Illuminate\Http\Request` instance.
+
+Here's an example of how you can achieve this:
+
+
+
+Certainly! Here's an example of a controller method and a corresponding route that retrieve the value of the 'remember_token' cookie and store it in the `$rememberToken` variable:
+
+Controller:
+
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class ExampleController extends Controller
+{
+    public function retrieveRememberToken(Request $request)
+    {
+
+        $rememberToken = $request->cookie('remember_token');
+
+
+        if ($rememberToken === null) {
+            $rememberToken = null; // Set $rememberToken to null
+        }
+
+        // Use the $rememberToken variable as needed
+
+        return response()->json(['remember_token' => $rememberToken]);
+    }
+}
+
+
+Route api.php code:
+
+
+use App\Http\Controllers\ExampleController;
+
+Route::get('/retrieve-remember-token', [ExampleController::class, 'retrieveRememberToken'])->name('retrieve-remember-token');
+

@@ -1,0 +1,28 @@
+Question 2:
+
+
+In your Laravel application, you want to retrieve the value of the 'User-Agent' header from the current request. Write the code to accomplish this and store the value in a variable called $userAgent.
+
+
+Answer 2:-
+
+ To retrieve the value of the 'User-Agent' header from the current request in a Laravel controller and store it in a variable called $userAgent:
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MyController extends Controller
+{
+    public function myMethod(Request $request)
+    {
+        $userAgent = $request->header('User-Agent');
+        
+        // ...
+        
+        return response()->json(['userAgent' => $userAgent]);
+    }
+}

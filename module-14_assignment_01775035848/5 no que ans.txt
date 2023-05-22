@@ -1,0 +1,47 @@
+Question 5:
+
+
+You are implementing a file upload feature in your Laravel application. Write the code to handle a file upload named 'avatar' in the current request and store the uploaded file in the 'public/uploads' directory. Use the original filename for the uploaded file.
+
+
+Answer 5:- 
+To handle a file upload named 'avatar' in a Laravel controller and store the uploaded file in the 'public/uploads' directory using the original filename:
+
+Controller (UploadController.php):
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class UploadController extends Controller
+{
+    public function upload(Request $request)
+    {
+        if ($request->hasFile('avatar') ) {
+            $file = $request->file('avatar');
+            $fileName = $file->getClientOriginalName();
+            $file->move(public_path('uploads'), $fileName);
+            
+            //  store the file path in the database if needed
+
+            
+            return response()->json(['message' => 'File uploaded successfully']);
+        }
+        
+        return response()->json(['message' => 'Invalid file or file upload failed'], 400);
+    }
+}
+
+
+Route web.php code for routing:-
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UploadController;
+
+Route::post('/upload', [UploadController::class, 'upload']);
+

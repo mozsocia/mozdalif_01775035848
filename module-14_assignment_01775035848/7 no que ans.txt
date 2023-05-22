@@ -1,0 +1,33 @@
+Question 7:
+
+
+Create a route in Laravel that handles a POST request to the '/submit' URL. Inside the route closure, retrieve the 'email' input parameter from the request and store it in a variable called $email. Return a JSON response with the following data:
+
+{
+
+    "success": true,
+
+    "message": "Form submitted successfully."
+
+}
+
+Answer 7:-
+
+Here's an route in Laravel that handles a POST request to the '/submit' URL and returns a JSON response mentioned in the Question:
+
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Route;
+
+Route::post('/submit', function (Request $request) {
+
+    $email = $request->input('email');
+
+    // Return a JSON response
+    return response()->json([
+        "success" => true,
+        "message" => "Form submitted successfully."
+    ]);
+});
+
+

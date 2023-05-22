@@ -1,0 +1,53 @@
+Question 4:
+
+Create a JSON response in Laravel with the following data:
+
+{
+    "message": "Success",
+    "data": {
+        "name": "John Doe",
+        "age": 25
+    }
+}
+
+
+
+Answer 4:-
+
+
+1. Define a route `routes/api.php` file:
+
+
+Route::get('/json-response', 'App\Http\Controllers\MyController@myResponse');
+
+
+2. Create a new controller or use an existing one by running the following command in your terminal:
+
+php artisan make:controller MyController
+
+
+3. Open the created controller file, `app/Http/Controllers/MyController.php`, and update the code as follows:
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MyController extends Controller
+{
+    public function myResponse()
+    {
+        $data = [
+            'message' => 'Success',
+            'data' => [
+                'name' => 'John Doe',
+                'age' => 25
+            ]
+        ];
+        
+        return response()->json($data);
+    }
+}
+

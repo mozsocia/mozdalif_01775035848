@@ -1,0 +1,43 @@
+Question 3:
+
+
+You are building an API endpoint in Laravel that accepts a GET request with a 'page' query parameter. Write the code to retrieve the value of the 'page' parameter from the current request and store it in a variable called $page. If the parameter is not present, set $page to null.
+
+
+
+Answer 3:-
+To retrieve the value of the 'page' query parameter from the current request in Laravel and store it in a variable called `$page`. If the parameter is not present, `$page` will be set to `null`:-
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+
+class MyControllerName extends Controller
+{
+    public function myEndpoint(Request $request)
+    {
+        $page = $request->query('page');
+
+        if (!$page) {
+            $page = null;
+        }
+
+        // Rest of your code...
+
+        return response()->json(['page' => $page]);
+    }
+}
+
+
+routes/api.php file and add the following route definition:- 
+
+<?php
+use App\Http\Controllers\MyControllerName;
+
+Route::get('/your-endpoint', [MyControllerName::class, 'myEndpoint']);
+
+
+
