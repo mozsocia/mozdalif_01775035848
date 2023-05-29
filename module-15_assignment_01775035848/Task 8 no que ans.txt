@@ -1,0 +1,69 @@
+
+Task 8: Blade Template Engine
+
+
+Create a Blade view called welcome.blade.php that includes a navigation bar and a section displaying the text "Welcome to Laravel!".
+
+
+ Answer 8:- 
+
+
+To create the welcome.blade.php view with a navigation bar and a section displaying the text "Welcome to Laravel!" in Laravel:
+
+1. Create a new file called welcome.blade.php in the resources/views directory of your Laravel project.
+
+
+
+2. The welcome.blade.php file code:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome to Laravel</title>
+    <style>
+        /* Add some basic styling to the navigation bar */
+        nav {
+            background-color: #333;
+            color: #fff;
+            padding: 10px;
+        }
+        
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        
+        nav ul li {
+            display: inline;
+            margin-right: 10px;
+        }
+        
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+        
+        /* Add some styling to the welcome section */
+        .welcome-section {
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <div class="welcome-section">
+        <h1>Welcome to Laravel!</h1>
+    </div>
+</body>
+</html>
+

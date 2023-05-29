@@ -1,0 +1,67 @@
+
+Task 4: Route Middleware
+
+
+Create a route group for authenticated users only. This group should include routes for /profile and /settings. Apply a middleware called AuthMiddleware to the route group to ensure only authenticated users can access these routes.
+
+
+ Answer 4 :- 
+
+Create a new middleware called AuthMiddleware by running the following command in your terminal:
+
+
+php artisan make:middleware AuthMiddleware
+
+
+
+in the app/Http/Middleware directory open the AuthMiddleware.php file and update the handle method 
+
+
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Http\Request;
+
+class AuthMiddleware
+{
+    public function handle(Request $request, Closure $next)
+    {
+        if (!auth()->check()) {
+            return redirect('/login');
+        }
+
+        return $next($request);
+    }
+}
+
+
+
+Register the AuthMiddleware in the $middlewareAliases array in the app/Http/Kernel.php file
+
+
+protected $middlewareAliases = [
+    // Other middleware...
+    'authCheck' => \App\Http\Middleware\AuthMiddleware::class,
+];
+
+
+
+To create a route group for authenticated users only , Define the route group in your routes file, typically located at routes/web.php. Here's the implementation:
+
+
+
+<?php
+
+use Illuminate\Support\Facades\Route;
+
+Route::middleware('authCheck')->group(function () {
+    Route::get('/profile', function () {
+        // Logic for the /profile route
+    })->name('profile');
+
+    Route::get('/settings', function () {
+        // Logic for the /settings route
+    })->name('settings');
+});

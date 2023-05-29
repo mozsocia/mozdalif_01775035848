@@ -1,0 +1,55 @@
+Task 6: Single Action Controller
+
+
+Create a single action controller called ContactController that handles a contact form submission. Implement the __invoke() method to process the form submission and send an email to a predefined address with the submitted data.
+
+
+Answer 6: -
+
+Create a single action controller called ContactController that handles a contact form submission. 
+
+
+php artisan make:controller ContactController --invokable
+
+
+Implement the __invoke() Method to the app/Http/Controllers/ContactController.php file 
+
+<?php
+
+namespace App\Http\Controllers;
+
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
+
+class ContactController extends Controller
+{
+    public function __invoke(Request $request)
+    {
+ 
+        $validatedData = $request->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+            'message' => 'required',
+        ]);
+
+
+        Mail::to('your-predefined-address@example.com')->send(new \App\Mail\ContactFormSubmitted($validatedData));
+
+  
+        return redirect()->back()->with('success', 'Thank you! Your message has been submitted.');
+    }
+
+        return redirect()->back()->with('success', 'Thank you for your message!');
+    }
+}
+
+
+
+
+the routes/web.php file code:
+
+use App\Http\Controllers\ContactController;
+
+Route::post('/contact', ContactController::class);
+
+

@@ -1,0 +1,44 @@
+Task 3: Global Middleware
+
+
+Create a global middleware that logs the request method and URL for every incoming request. Log the information to the Laravel log file.
+
+
+ Answer 3:-
+
+To create a global middleware in Laravel that logs the request method and URL for every incoming request, you can follow these steps:
+
+to generate the middleware:
+
+php artisan make:middleware LogRequestMiddleware
+
+
+
+the LogRequestMiddleware.php file and modify its handle method to log the request information. Here's the code
+
+<?php
+
+namespace App\Http\Middleware;
+
+use Closure;
+use Illuminate\Support\Facades\Log;
+
+class LogRequestMiddleware
+{
+    public function handle($request, Closure $next)
+    {
+        $logMessage = 'Request Method: ' . $request->method() . ', url:' . $request->url().  ', Full URL: ' . $request->fullUrl();
+        
+        Log::info($logMessage);
+
+        return $next($request);
+    }
+}
+
+Now to  the app/Http/Kernel.php file and add the LogRequestMiddleware to the $middleware property:
+
+
+protected $middleware = [
+    // Other middleware...
+    \App\Http\Middleware\LogRequestMiddleware::class,
+];

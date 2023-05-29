@@ -1,0 +1,34 @@
+
+Task 2: Request Redirect
+
+
+Create a route /home that redirects to /dashboard using a 302 redirect.
+
+
+Answer 2:-
+
+To create a route /home that redirects to /dashboard using a 302 redirect,
+
+Define the route the routes/web.php file :-
+
+<?php
+use App\Http\Controllers\HomeController;
+
+Route::get('/home', [HomeController:class,'index'])->name('home');
+
+
+
+Code for the HomeController file located in the app/Http/Controllers directory.
+
+
+<?php
+
+namespace App\Http\Controllers;
+
+class HomeController extends Controller
+{
+    public function index()
+    {
+        return redirect('/dashboard');
+    }
+}
