@@ -1,0 +1,48 @@
+
+
+Task 5:
+
+
+ 
+
+
+Create a new migration file named "add_category_to_products_table" that will be responsible for adding a new column called "category" to the "products" table. The "category" column should be a string column with a maximum length of 50 characters.
+
+
+
+
+
+
+Answer 5:
+
+To create a new migration file named "add_category_to_products_table"  Run the following command to create a new migration file:
+
+php artisan make:migration add_category_to_products_table --table=products
+
+
+Open the newly created migration file located at "database/migrations". The filename should be something like "2023_06_05_123456_add_category_to_products_table.php".
+
+update the `up` method with the following code:
+
+
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class AddCategoryToProductsTable extends Migration
+{
+    public function up()
+    {
+        Schema::table('products', function (Blueprint $table) {
+            $table->string('category', 50)->after('description')->nullable();
+        });
+    }
+
+    public function down()
+    {
+        Schema::table('products', function (Blueprint $table) {
+            $table->dropColumn('category');
+        });
+    }
+}

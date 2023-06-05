@@ -1,0 +1,17 @@
+Task 1:
+
+
+Create a new Laravel project named "MigrationAssignment" using the Laravel command-line interface.
+
+Answer 1: 
+
+to create new Laravel projects by globally installing the Laravel installer via Composer:
+
+to install the laravel installer run the command
+
+composer global require laravel/installer
+
+
+Create a new Laravel project named "MigrationAssignment" run the command
+
+laravel new MigrationAssignment

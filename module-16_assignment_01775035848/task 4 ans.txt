@@ -1,0 +1,22 @@
+Task 4:
+
+
+Modify the existing migration file "create_products_table" to add a new column called "quantity" to the "products" table. The "quantity" column should be an integer column and allow null values.
+
+
+Answer 4: 
+
+To modify the existing migration file "create_products_table" to add a new column called "quantity" to the "products" table, below codes:
+
+
+public function up()
+{
+    Schema::create('products', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->decimal('price');
+        $table->text('description');
+        $table->integer('quantity')->nullable();
+        $table->timestamps();
+    });
+}

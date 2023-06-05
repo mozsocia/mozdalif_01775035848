@@ -1,0 +1,11 @@
+Task 3:
+
+
+After creating the migration file, run the migration to create the "products" table in the database.
+
+
+Answer 3:
+
+Run the following command to execute the migration:
+
+php artisan migrate

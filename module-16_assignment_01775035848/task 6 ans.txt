@@ -1,0 +1,16 @@
+Task 6:
+
+
+After creating the new migration file, run the migration to add the "category" column to the "products" table.
+
+
+
+
+
+Answer 6: 
+
+To run the migration and add the "category" column to the "products" table,in the root directory of Laravel project ("MigrationAssignment").
+
+Run the following command to execute the migration:
+
+php artisan migrate
